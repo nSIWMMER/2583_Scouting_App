@@ -163,6 +163,7 @@ function resetForm() {
   document.getElementById('scoutForm').reset();
   document.getElementById('autoScoreVal').textContent = '0';
   document.getElementById('teleopScoreVal').textContent = '0';
+  document.getElementById('cyclesPerMatchVal').textContent = '0';
   selected = {
     alliance: null,
     startingPosition: null,
@@ -199,6 +200,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   initToggleGroup('endgameGroup', 'endgameStatus');
   initStepper('autoScore', document.getElementById('autoScoreVal'));
   initStepper('teleopScore', document.getElementById('teleopScoreVal'));
+  initStepper('cyclesPerMatch', document.getElementById('cyclesPerMatchVal'));
 
   document.getElementById('photoInput').addEventListener('change', async (e) => {
     const file = e.target.files[0];
@@ -225,6 +227,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       autoScore: document.getElementById('autoScoreVal').textContent,
       autoClimb: selected.autoClimb || '',
       teleopScore: document.getElementById('teleopScoreVal').textContent,
+      cyclesPerMatch: document.getElementById('cyclesPerMatchVal').textContent,
       endgameStatus: selected.endgameStatus || '',
       defenseRating: selected.defenseRating || '',
       brokeDown: document.getElementById('brokeDown').checked,

@@ -11,7 +11,7 @@
 <body>
 
 <header class="app-header">
-  <div class="brand">Pit<span>Scout</span></div>
+  <div class="brand">Westwood <span>Scouting</span></div>
   <button class="settings-btn" id="settingsBtn">SETTINGS</button>
 </header>
 
@@ -60,12 +60,8 @@
     <div class="card">
       <p class="card-label">Auto</p>
       <div class="field">
-        <label>Total Auto Fuel Scored</label>
-        <div class="stepper">
-          <button type="button" data-target="autoScore" data-delta="-1">−</button>
-          <span class="value" id="autoScoreVal">0</span>
-          <button type="button" data-target="autoScore" data-delta="1">+</button>
-        </div>
+        <label for="autoScoreVal">Total Auto Fuel Scored</label>
+        <input type="number" id="autoScoreVal" inputmode="numeric" min="0" value="0" />
       </div>
       <div class="field" style="margin-bottom:0">
         <label>Auto Climb</label>
@@ -80,20 +76,12 @@
     <div class="card">
       <p class="card-label">Teleop</p>
       <div class="field">
-        <label>Fuel Scored per Cycle</label>
-        <div class="stepper">
-          <button type="button" data-target="teleopScore" data-delta="-1">−</button>
-          <span class="value" id="teleopScoreVal">0</span>
-          <button type="button" data-target="teleopScore" data-delta="1">+</button>
-        </div>
+        <label for="teleopScoreVal">Fuel Scored per Cycle</label>
+        <input type="number" id="teleopScoreVal" inputmode="numeric" min="0" value="0" />
       </div>
       <div class="field">
-        <label>Number of Cycles per Match</label>
-        <div class="stepper">
-          <button type="button" data-target="cyclesPerMatch" data-delta="-1">−</button>
-          <span class="value" id="cyclesPerMatchVal">0</span>
-          <button type="button" data-target="cyclesPerMatch" data-delta="1">+</button>
-        </div>
+        <label for="cyclesPerMatchVal">Number of Cycles per Match</label>
+        <input type="number" id="cyclesPerMatchVal" inputmode="numeric" min="0" value="0" />
       </div>
       <div class="field">
         <label>Defense Rating (1 = none, 5 = shut down)</label>
@@ -162,8 +150,8 @@
   <div class="modal">
     <h2>Settings</h2>
     <div class="field">
-      <label for="scouterName">Your Name</label>
-      <input type="text" id="scouterName" placeholder="e.g. Jordan" />
+      <label for="scouterName">Your Name (required)</label>
+      <input type="text" id="scouterName" placeholder="e.g. Jordan" required />
     </div>
     <div class="field">
       <label for="eventKey">Event Key (TBA code, optional)</label>

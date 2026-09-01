@@ -1,4 +1,4 @@
-const CACHE_NAME = 'frc-scouting-v1';
+const CACHE_NAME = 'frc-scouting-v2';
 const APP_SHELL = [
   './',
   './index.html',

@@ -149,21 +149,12 @@ function initToggleGroup(id, key) {
   });
 }
 
-function initStepper(targetId, valEl) {
-  document.querySelectorAll(`button[data-target="${targetId}"]`).forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const delta = parseInt(btn.dataset.delta, 10);
-      const current = parseInt(valEl.textContent, 10) || 0;
-      valEl.textContent = Math.max(0, current + delta);
-    });
-  });
-}
 
 function resetForm() {
   document.getElementById('scoutForm').reset();
-  document.getElementById('autoScoreVal').textContent = '0';
-  document.getElementById('teleopScoreVal').textContent = '0';
-  document.getElementById('cyclesPerMatchVal').textContent = '0';
+  document.getElementById('autoScoreVal').value = '0';
+  document.getElementById('teleopScoreVal').value = '0';
+  document.getElementById('cyclesPerMatchVal').value = '0';
   selected = {
     alliance: null,
     startingPosition: null,
@@ -198,9 +189,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   initToggleGroup('autoClimbGroup', 'autoClimb');
   initToggleGroup('defenseGroup', 'defenseRating');
   initToggleGroup('endgameGroup', 'endgameStatus');
-  initStepper('autoScore', document.getElementById('autoScoreVal'));
-  initStepper('teleopScore', document.getElementById('teleopScoreVal'));
-  initStepper('cyclesPerMatch', document.getElementById('cyclesPerMatchVal'));
+
 
   document.getElementById('photoInput').addEventListener('change', async (e) => {
     const file = e.target.files[0];
@@ -224,10 +213,10 @@ window.addEventListener('DOMContentLoaded', async () => {
       teamNumber: document.getElementById('teamNumber').value,
       alliance: selected.alliance || '',
       startingPosition: selected.startingPosition || '',
-      autoScore: document.getElementById('autoScoreVal').textContent,
+      autoScore: document.getElementById('autoScoreVal').value,
       autoClimb: selected.autoClimb || '',
-      teleopScore: document.getElementById('teleopScoreVal').textContent,
-      cyclesPerMatch: document.getElementById('cyclesPerMatchVal').textContent,
+      teleopScore: document.getElementById('teleopScoreVal').value,
+      cyclesPerMatch: document.getElementById('cyclesPerMatchVal').value,
       endgameStatus: selected.endgameStatus || '',
       defenseRating: selected.defenseRating || '',
       brokeDown: document.getElementById('brokeDown').checked,
@@ -235,6 +224,13 @@ window.addEventListener('DOMContentLoaded', async () => {
       photoBase64: photoBase64,
       clientTimestamp: new Date().toISOString()
     };
+
+    if (!settings.scouterName) {
+      showToast('Please enter your name in Settings first');
+      document.getElementById('scouterName').value = '';
+      document.getElementById('settingsModal').classList.add('show');
+      return;
+    }
 
     if (!entry.teamNumber || !entry.matchNumber) {
       showToast('Team number and match number are required');

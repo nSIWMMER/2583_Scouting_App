@@ -7,7 +7,7 @@
   --border: #323942;
   --text: #e8e6e1;
   --text-dim: #8b9198;
-  --amber: #f5a623;
+  --amber: #f77707;
   --amber-dim: #a9741a;
   --cyan: #4fd1c5;
   --red: #e85d4c;
@@ -196,33 +196,6 @@ main {
   background: #4a90d9;
   border-color: #4a90d9;
   color: #fff;
-}
-
-/* Stepper for score counts */
-
-.stepper {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.stepper button {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--surface-raised);
-  color: var(--amber);
-  font-size: 20px;
-  font-family: var(--font-mono);
-  cursor: pointer;
-}
-
-.stepper .value {
-  font-family: var(--font-mono);
-  font-size: 22px;
-  min-width: 40px;
-  text-align: center;
 }
 
 /* Photo capture */
